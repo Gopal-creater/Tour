@@ -35,11 +35,11 @@ pipeline {
         stage("docker push"){
             steps {
                 script {
-                    // Login to Docker Hub
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        // Push the Docker image to Docker Hub
-                        dockerImage.push()
-                    }
+                    // Log in to Docker Hub
+                    sh `docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD`
+                    
+                    // Push the Docker image to Docker Hub
+                    dockerImage.push()
                 }
             }
         }
