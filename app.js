@@ -20,6 +20,10 @@ in your route handlers. */
 app.use(express.json());
 
 //Routes----------
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 
