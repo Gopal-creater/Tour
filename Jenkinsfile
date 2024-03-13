@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Build your Docker image
-                    dockerImage = docker.build('your-username/your-image-name:tag')
+                    dockerImage = docker.build('gopalgautam/jenkinstest:latest')
                 }
             }
         }
