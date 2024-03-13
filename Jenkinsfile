@@ -2,8 +2,9 @@ pipeline {
     agent any
     tools {
         nodejs 'node' // 'node' should match the NodeJS installation name configured in Jenkins
+        docker 'docker'
     }
-    
+
     stages {
         stage("checkout") {
             steps{
