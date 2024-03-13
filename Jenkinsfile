@@ -3,14 +3,15 @@ pipeline {
     stages {
         stage("checkout") {
             steps{
+                //Clone the github repo
                 checkout scm
             }
         }
 
         stage("build"){
             steps {
-                sh `npm i`
-                sh `npm run build`
+                npm i
+                npm run build
             }
         }
     }
