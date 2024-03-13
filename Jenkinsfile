@@ -1,15 +1,15 @@
 pipeline {
-    agent any
-    tools {
+    agent any // Specifies that the pipeline can run on any available agent (Jenkins agent or node).
+    tools { //Allows you to define tools or installations needed for your pipeline.
         nodejs 'node' // 'node' should match the NodeJS installation name configured in Jenkins
         dockerTool 'docker'
     }
 
-    stages {
+    stages { //Defines a series of stages that make up the Jenkins pipeline.
         stage("checkout") {
             steps{
                 //Clone the github repo
-                checkout scm
+                checkout scm //Uses the checkout step to fetch the source code from the configured SCM system (e.g., Git).
             }
         }
 
