@@ -10,8 +10,11 @@ pipeline {
 
         stage("build"){
             steps {
-                npm i
-                npm run build
+               // Jenkins will automatically set up the environment for npm commands
+                script {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
     }
