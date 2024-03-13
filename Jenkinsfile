@@ -26,7 +26,20 @@ pipeline {
         stage("build image"){
             steps {
                 script {
-                    sh 'docker build -t test-app:1.0 .'
+                    // Build your Docker image
+                    dockerImage = docker.build('your-username/your-image-name:tag')
+                }
+            }
+        }
+
+        stage("docker push"){
+            steps {
+                script {
+                    // Login to Docker Hub
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        // Push the Docker image to Docker Hub
+                        dockerImage.push()
+                    }
                 }
             }
         }
