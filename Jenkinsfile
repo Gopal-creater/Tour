@@ -3,6 +3,7 @@ pipeline {
     tools {
         nodejs 'node' // 'node' should match the NodeJS installation name configured in Jenkins
     }
+    
     stages {
         stage("checkout") {
             steps{
@@ -17,6 +18,14 @@ pipeline {
                 script {
                     sh 'npm install'
                     sh 'npm run build'
+                }
+            }
+        }
+
+        stage("build image"){
+            steps {
+                script {
+                    sh 'docker build -t test-app:1.0 .'
                 }
             }
         }
